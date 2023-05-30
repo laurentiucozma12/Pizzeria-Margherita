@@ -15,18 +15,25 @@ use App\Models\Listing;
 |
 */
 
-// All listings
 Route::get('/', function () {
-        return view('listings', [
-        'heading' => 'Latest Listings',
-        'listings' => Listing::all()
-
-    ]);
+    return view('welcome');
 });
 
-// Single Listing
-Route::get('/listings/{id}', function ($id) {
-    return view('listing', [
-        'listing' => Listing::find($id)
-    ]);
+Route::get('/about', function () {
+    return '<h4>About Page</h4>';
 });
+
+Route::get('/store', function () {
+    $category = request('category');
+
+    if (isset($category)) {    
+        // aici fiecare categorie o sa aiba pagina proprie, ex pagina de pizza, pagina de bauturi, etc.
+        return 'you visiting the store for ' . strip_tags($category);
+    } else {
+        // aici o sa fac sa apara toate categoriile din meniu, Pizza, Bauturi, etc.
+        return 'you are viewing all intruments';
+    }
+
+});
+
+
