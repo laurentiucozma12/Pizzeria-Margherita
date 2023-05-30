@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Listing;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,25 +15,24 @@ use App\Models\Listing;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/about', [HomeController::class, 'about']);
+
+Route::get('/contact', [HomeController::class, 'contact']);
+
+Route::get('/guitars/{item?}', function () {
+
 });
 
-Route::get('/about', function () {
-    return '<h4>About Page</h4>';
-});
-
-Route::get('/store', function () {
-    $category = request('category');
-
-    if (isset($category)) {    
-        // aici fiecare categorie o sa aiba pagina proprie, ex pagina de pizza, pagina de bauturi, etc.
-        return 'you visiting the store for ' . strip_tags($category);
+Route::get('/store/{category?}/{item?}', function ($category = null, $item = null) {
+    if (isset($category)) {
+        if (isset($item)) {
+            return "you visiting the store for {$category} for {$item}";
+        }
+        
+        return "you visiting the store for {$category}";
     } else {
-        // aici o sa fac sa apara toate categoriile din meniu, Pizza, Bauturi, etc.
         return 'you are viewing all intruments';
     }
-
 });
-
-
