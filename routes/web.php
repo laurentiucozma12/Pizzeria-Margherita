@@ -2,11 +2,13 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MenuController;
-use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LayoutController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ServicesController;
+
 // use App\Http\Controllers\MyController;
 
 /*
@@ -20,15 +22,17 @@ use App\Http\Controllers\ContactController;
 |
 */
 
+Route::get('/about', [AboutController::class, 'index']);
+
+Route::get('/contact', [ContactController::class, 'index']);
+
 Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/', [LayoutController::class, 'index']);
 
 Route::get('/menu', [MenuController::class, 'index']);
 
 Route::get('/services', [ServicesController::class, 'index']);
-
-Route::get('/about', [AboutController::class, 'index']);
-
-Route::get('/contact', [ContactController::class, 'index']);
 
 // Route::resource('/', MyController::class);
 
