@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'About')
+@section('title', 'About | Pizzeria Margherita')
 
 @section('content')
 <div class="max-w-7xl mx-auto p-6 lg:p-8">

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>@yield('title')</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,32 +16,21 @@
         </style>
 
         <!-- My Styles -->
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-
-            .p-4 {
-                padding: 1rem;
-            }
-
-            nav a {
-                padding: 0.5rem;
-            }
-        </style>
+        <link rel="stylesheet" href={{url("css/site.css")}}>
     </head>
     <body class="antialiased">
         <div class="relative p-4">
             <nav>
-                <a href="/">Home</a>
-                <a href="/menu">Menu</a>
-                <a href="/services">Services</a>
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
+                <a href="{{ route('home.index') }}">Home</a>
+                <a href="{{ route('home.menu') }}">Menu</a>
+                <a href="{{ route('pizza.index') }}">Pizza</a>
+                <a href="{{ route('home.services') }}">Services</a>
+                <a href="{{ route('home.about') }}">About</a>
+                <a href="{{ route('home.contact') }}">Contact</a>
             </nav>
         </div>
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center">
-
+ 
             @yield('content')
 
         </div>

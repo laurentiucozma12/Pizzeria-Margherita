@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Contact')
+@section('title', 'Contact | Pizzeria Margherita')
 
 @section('content')
 <div class="max-w-7xl mx-auto p-6 lg:p-8">
@@ -16,6 +16,6 @@
 
 @section('scripts')
 <script>
-    alert("Script works in contact page!");
+    // alert("Script works in contact page!");
 </script>
 @endsection
