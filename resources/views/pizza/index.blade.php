@@ -3,19 +3,19 @@
 @section('content')
 <div class="max-w-7xl mx-auto p-6 lg:p-8">
 
-    @if (count($pizza) > 0) 
+    @if (count($pizzas) > 0) 
 
-        @foreach ($pizza as $pizzaType)
+        @foreach ($pizzas as $pizza)
 
             <div>
                 <h3>
-                    {{$pizzaType['type']}}
-                    <ul>
-                        <li>
-                            Made by: {{$pizzaType['cook']}}
-                        </li>
-                    </ul>
-                </h3>
+                    <a href="{{ route('pizza.show', ['pizza' => $pizza['id']])}}">{{$pizza['type']}}</a>
+                </h3>                
+                <ul>
+                    <li>
+                        Made by: {{$pizza['cook']}}
+                    </li>
+                </ul>
             </div>
 
         @endforeach

@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PizzaController extends Controller
+class PizzasController extends Controller
 {
     private static function getData() {
         return [
-            // ['id' => 1, 'type' => 'Margherita', 'cook' => 'Giovanni'],
-            // ['id' => 2, 'type' => 'Chicken Delichips', 'cook' => 'Leonard'],
-            // ['id' => 3, 'type' => 'Quatro Stagionni', 'cook' => 'Gaspacio'],
-            // ['id' => 4, 'type' => 'Tonno e Cipolla', 'cook' => 'Gordon Ramsy']        
+            ['id' => 1, 'type' => 'Margherita', 'cook' => 'Giovanni'],
+            ['id' => 2, 'type' => 'Chicken Delichips', 'cook' => 'Leonard'],
+            ['id' => 3, 'type' => 'Quatro Stagionni', 'cook' => 'Gaspacio'],
+            ['id' => 4, 'type' => 'Tonno e Cipolla', 'cook' => 'Gordon Ramsy']        
         ];
     }
     /**
@@ -20,7 +20,7 @@ class PizzaController extends Controller
     public function index()
     {
         return view('pizza.index', [
-            'pizza' => self::getData(),
+            'pizzas' => self::getData(),
             'userInput' => '<script>alert("hello")</script>'
         ]);
     }
@@ -44,9 +44,19 @@ class PizzaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $pizza)
     {
-        //
+        $pizzas = self::getData();
+
+        $index = array_search($pizza, array_column($pizzas, 'id'));
+
+        if ($index === false) {
+            abort(404);
+        }
+
+        return view('pizza.show', [
+            'pizza' => $pizzas[$index]
+        ]);
     }
 
     /**
