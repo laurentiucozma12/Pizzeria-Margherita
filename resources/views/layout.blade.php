@@ -22,7 +22,7 @@
         <div class="relative p-4">
             <nav>
                 <a href="{{ route('home.index') }}">Home</a>
-                <a href="{{ route('home.menu') }}">Menu</a>
+                <a href="{{ route('menu.index') }}">Menu</a>
                 <a href="{{ route('pizza.index') }}">Pizza</a>
                 <a href="{{ route('home.services') }}">Services</a>
                 <a href="{{ route('home.about') }}">About</a>
