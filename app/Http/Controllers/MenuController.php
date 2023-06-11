@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pizza;
 
 class MenuController extends Controller
 {
@@ -13,7 +14,7 @@ class MenuController extends Controller
     public function index()
     {
         return view('menu.index', [
-            'pizzas' => self::getData()
+            'pizzas' => Pizza::all()
         ]);
     }
 
@@ -30,7 +31,16 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // POST
+        $pizza = new Pizza();
+
+        $pizza->pizza_name = $request->input('pizza-name');
+        $pizza->pizza_weight = $request->input('pizza-weight');
+        $pizza->cook_name = $request->input('cook-name');
+
+        $pizza->save();
+
+        return redirect()->route('menu.index');
     }
 
     /**
