@@ -9,7 +9,6 @@ use App\Http\Controllers\ServicesController;
 
 
 use App\Http\Controllers\MenuController;
-use App\Http\Controllers\PizzasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +27,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/services', [ServicesController::class, 'index'])->name('home.services');
 
 Route::resource('menu', MenuController::class);
-Route::resource('pizza', PizzasController::class);
 
 
 Route::get('/store/{category?}/{item?}', function ($category = null, $item = null) {

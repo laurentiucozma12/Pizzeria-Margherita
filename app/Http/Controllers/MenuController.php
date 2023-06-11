@@ -45,11 +45,11 @@ class MenuController extends Controller
         ];
     }
 
-    public function show(string $pizza)
+    public function show(string $menu)
     {
         $pizzas = self::getData();
 
-        $index = array_search($pizza, array_column($pizzas, 'id'));
+        $index = array_search($menu, array_column($pizzas, 'id'));
 
         if ($index === false) {
             abort(404);
