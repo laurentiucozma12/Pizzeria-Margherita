@@ -4,6 +4,7 @@
 <div class="max-w-7xl mx-auto p-6 lg:p-8">
 
     <form method="POST" action="{{route('menu.store')}}">
+        
         <div>
             <label class="text-sm" for="pizza-name">Pizza name</label>
             <input class="text-lg border-1" type="text" id="pizza-name" name="pizza-name">
@@ -15,6 +16,9 @@
         <div>
             <label class="text-sm" for="cook-name">Cook name</label>
             <input class="text-lg border-1" type="text" id="cook-name" name="cook-name">
+        </div>     
+        <div class="container">
+            <button class="border-1">Submit</button>
         </div>
     </form>
 

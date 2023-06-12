@@ -5,10 +5,10 @@
 
     <div>
         <h3>
-            {{$pizza['type']}}
+            {{$pizza['pizza_name']}}
             <ul>
                 <li>
-                    Made by: {{$pizza['cook']}}
+                    Made by: {{$pizza['cook_name']}}
                 </li>
             </ul>
         </h3>

@@ -14,14 +14,29 @@ nav a {
     border-width: .07rem;
 }
 
-.form div {
-    margin-bottom: 15px;
+form {
+    padding: 2rem;
+    background-color: gray;
 }
 
-.form div>input {
+form input {
+    margin-bottom: 1rem;
+}
+
+form .container {
+    display: flex;
+    justify-content: center;
+}
+
+form div>input {
     display: block;
 }
 
-.form div>button {
+form div>button {
     padding: 5px;
+    background-color: #6f6f6f;
+}
+
+form div>button:hover {
+    background-color: #a9a9a9;
 }

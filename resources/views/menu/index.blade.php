@@ -9,11 +9,14 @@
 
             <div>
                 <h3>
-                    <a href="{{ route('menu.show', ['menu' => $pizza['id']])}}">{{$pizza['type']}}</a>
+                    <a href="{{ route('menu.show', ['menu' => $pizza['id']])}}">{{$pizza['pizza_name']}}</a>
                 </h3>
                 <ul>
                     <li>
-                        Made by: {{$pizza['cook']}}
+                        Weight: {{$pizza['pizza_weight']}}
+                    </li>
+                    <li>
+                        Made by: {{$pizza['cook_name']}}
                     </li>
                 </ul>
             </div>

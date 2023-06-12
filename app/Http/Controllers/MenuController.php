@@ -23,7 +23,7 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        return view('menu/create');
     }
 
     /**
@@ -46,18 +46,9 @@ class MenuController extends Controller
     /**
      * Display the specified resource.
      */
-    private static function getData() {
-        return [
-            ['id' => 1, 'type' => 'Margherita', 'cook' => 'Giovanni'],
-            ['id' => 2, 'type' => 'Chicken Delichips', 'cook' => 'Leonard'],
-            ['id' => 3, 'type' => 'Quatro Stagionni', 'cook' => 'Gaspacio'],
-            ['id' => 4, 'type' => 'Tonno e Cipolla', 'cook' => 'Gordon Ramsy']        
-        ];
-    }
-
     public function show(string $menu)
     {
-        $pizzas = self::getData();
+        $pizzas = Pizza::all()->toArray();
 
         $index = array_search($menu, array_column($pizzas, 'id'));
 
