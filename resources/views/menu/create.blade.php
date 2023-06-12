@@ -5,6 +5,7 @@
 
     <form method="POST" action="{{route('menu.store')}}">
         
+        @csrf
         <div>
             <label class="text-sm" for="pizza-name">Pizza name</label>
             <input class="text-lg border-1" type="text" id="pizza-name" name="pizza-name">
@@ -20,6 +21,7 @@
         <div class="container">
             <button class="border-1">Submit</button>
         </div>
+        
     </form>
 
 </div>
