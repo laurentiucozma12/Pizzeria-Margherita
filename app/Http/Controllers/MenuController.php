@@ -31,6 +31,12 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'pizza-name' => 'required',    
+            'pizza-weight' => ['required', 'integer'],    
+            'cook-name' => 'required'
+        ]);
+
         // POST
         $pizza = new Pizza();
 

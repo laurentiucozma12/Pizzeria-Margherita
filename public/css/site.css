@@ -19,7 +19,7 @@ form {
     background-color: gray;
 }
 
-form input {
+form .input-container {
     margin-bottom: 1rem;
 }
 
@@ -39,4 +39,10 @@ form div>button {
 
 form div>button:hover {
     background-color: #a9a9a9;
+}
+
+form .form-error {
+    font-size: .75rem;
+    color: red;
+    font-weight: bold;
 }
