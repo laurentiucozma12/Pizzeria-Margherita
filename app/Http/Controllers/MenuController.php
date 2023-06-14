@@ -7,10 +7,6 @@ use App\Models\Pizza;
 
 class MenuController extends Controller
 {
-    
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return view('menu.index', [
@@ -18,17 +14,11 @@ class MenuController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('menu/create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -49,43 +39,39 @@ class MenuController extends Controller
         return redirect()->route('menu.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $menu)
+    public function show(Pizza $pizza)
     {
-        $pizzas = Pizza::all()->toArray();
-
-        $index = array_search($menu, array_column($pizzas, 'id'));
-
-        if ($index === false) {
-            abort(404);
-        }
-
+        // GET
         return view('menu.show', [
-            'pizza' => $pizzas[$index]
+            'pizza' => $pizza
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Pizza $pizza)
     {
-        //
+        return view('menu.edit', [
+            'pizza' => $pizza
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Pizza $pizza)
     {
-        //
+        $request->validate([
+            'pizza-name' => 'required',    
+            'pizza-weight' => ['required', 'integer'],    
+            'cook-name' => 'required'
+        ]);
+
+        // POST
+        $pizza->pizza_name = $request->input('pizza-name');
+        $pizza->pizza_weight = $request->input('pizza-weight');
+        $pizza->cook_name = $request->input('cook-name');
+
+        $pizza->save();
+
+        return redirect()->route('menu.show', $pizza->id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //

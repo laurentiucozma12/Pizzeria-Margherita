@@ -8,6 +8,9 @@
             {{$pizza['pizza_name']}}
             <ul>
                 <li>
+                    Weight: {{$pizza['pizza_weight']}}
+                </li>
+                <li>
                     Made by: {{$pizza['cook_name']}}
                 </li>
             </ul>
