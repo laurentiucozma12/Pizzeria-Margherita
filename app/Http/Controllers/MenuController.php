@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pizza;
+use App\Http\Requests\MenuFormRequest;
 
 class MenuController extends Controller
 {
@@ -38,23 +39,56 @@ class MenuController extends Controller
 
         return redirect()->route('menu.index');
     }
+    // Cleaner but does not work yet
+    // public function store(Request $request)
+    // {
+    //     $data = $request->validated();
 
-    public function show(Pizza $pizza)
+    //     // POST
+    //     $pizza = new Pizza();
+
+    //     $pizza->pizza_name = $data['pizza-name'];
+    //     $pizza->pizza_weight = $data['pizza_weight'];
+    //     $pizza->cook_name = $data['cook_name'];
+
+    //     $pizza->save();
+
+    //     return redirect()->route('menu.index');
+    // }
+
+    public function show($pizza)
     {
         // GET
         return view('menu.show', [
-            'pizza' => $pizza
+            'pizza' => Pizza::findOrFail($pizza)
         ]);
     }
+    // Cleaner but does not work yet
+    // public function show(Pizza $pizza)
+    // {
+    //     // GET
+    //     return view('menu.show', [
+    //         'pizza' => $pizza
+    //     ]);
+    // }
 
-    public function edit(Pizza $pizza)
+    public function edit($pizza)
     {
+        // Returneaza pagina edit daca gaseste id-ul pizzei
         return view('menu.edit', [
-            'pizza' => $pizza
+            'pizza' => Pizza::findOrFail($pizza)
         ]);
     }
+    // Cleaner but does not work yet
+    // public function edit(Pizza $pizza)
+    // {
+    //     // GET
+    //     return view('menu.edit', [
+    //         'pizza' => $pizza
+    //     ]);
+    // }
 
-    public function update(Request $request, Pizza $pizza)
+    public function update(Request $request, string $pizza)
     {
         $request->validate([
             'pizza-name' => 'required',    
@@ -63,14 +97,31 @@ class MenuController extends Controller
         ]);
 
         // POST
-        $pizza->pizza_name = $request->input('pizza-name');
-        $pizza->pizza_weight = $request->input('pizza-weight');
-        $pizza->cook_name = $request->input('cook-name');
+        $record = Pizza::FindOrFail($pizza);
 
-        $pizza->save();
+        $record->pizza_name = $request->input('pizza-name');
+        $record->pizza_weight = $request->input('pizza-weight');
+        $record->cook_name = $request->input('cook-name');
 
-        return redirect()->route('menu.show', $pizza->id);
+        $record->save();
+
+        return redirect()->route('menu.show', $pizza);
     }
+    // Cleaner but does not work yet
+    // public function update(MenuFormRequest $request, Pizza $pizza)
+    // {
+    //     // POST
+    //     $data = $request->validated();
+
+    //     // POST
+    //     $pizza->pizza_name = $data['pizza-name'];
+    //     $pizza->pizza_weight = $data['pizza_weight'];
+    //     $pizza->cook_name = $data['cook_name'];
+
+    //     $pizza->save();
+
+    //     return redirect()->route('menu.show', $pizza->id);
+    // }
 
     public function destroy(string $id)
     {
