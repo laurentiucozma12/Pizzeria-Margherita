@@ -74,7 +74,6 @@ class MenuController extends Controller
 
     public function edit($pizza)
     {
-        // Returneaza pagina edit daca gaseste id-ul pizzei
         return view('menu.edit', [
             'pizza' => Pizza::findOrFail($pizza)
         ]);
@@ -123,8 +122,17 @@ class MenuController extends Controller
     //     return redirect()->route('menu.show', $pizza->id);
     // }
 
-    public function destroy(string $id)
+    public function delete($pizza)
     {
-        //
+        return view('menu.delete', [
+            'pizza' => Pizza::findOrFail($pizza)
+        ]);
     }
+
+    // public function destroy(string $pizza)
+    // {
+    //     // return view('menu.delete', [
+    //     //     'pizza' => Pizza::findOrFail($pizza)
+    //     // ]);
+    // }
 }
