@@ -76,6 +76,7 @@ class MenuController extends Controller
 
     public function delete($pizza)
     {
+        // GET
         return view('menu.delete', [
             'pizza' => Pizza::findOrFail($pizza)
         ]);
