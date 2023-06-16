@@ -21,11 +21,11 @@
     <body class="antialiased">
         <div class="relative p-4">
             <nav>
-                <a href="{{ route('home.index') }}">Home</a>
+                <a href="{{ route('root.home') }}">Home</a>
                 <a href="{{ route('menu.index') }}">Menu</a>
-                <a href="{{ route('home.services') }}">Services</a>
-                <a href="{{ route('home.about') }}">About</a>
-                <a href="{{ route('home.contact') }}">Contact</a>
+                <a href="{{ route('root.services') }}">Services</a>
+                <a href="{{ route('root.about') }}">About</a>
+                <a href="{{ route('root.contact') }}">Contact</a>
             </nav>
         </div>
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center">

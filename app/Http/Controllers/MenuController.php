@@ -81,4 +81,24 @@ class MenuController extends Controller
             'pizza' => Pizza::findOrFail($pizza)
         ]);
     }
+
+    public function destroy(Request $request, string $pizza)
+    {
+        $request->validate([
+            'pizza-name' => 'required',    
+            'pizza-weight' => ['required', 'integer'],    
+            'cook-name' => 'required'
+        ]);
+
+        // POST
+        $record = Pizza::FindOrFail($pizza);
+
+        $record->pizza_name = $request->input('pizza-name');
+        $record->pizza_weight = $request->input('pizza-weight');
+        $record->cook_name = $request->input('cook-name');
+
+        $record->save();
+
+        return redirect()->route('menu.show', $pizza);
+    }
 }

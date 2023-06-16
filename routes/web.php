@@ -7,7 +7,6 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServicesController;
 
-
 use App\Http\Controllers\MenuController;
 
 /*
@@ -21,22 +20,9 @@ use App\Http\Controllers\MenuController;
 |
 */
 
-Route::get('/about', [AboutController::class, 'index'])->name('home.about');
-Route::get('/contact', [ContactController::class, 'index'])->name('home.contact');
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
-Route::get('/services', [ServicesController::class, 'index'])->name('home.services');
+Route::get('/about', [AboutController::class, 'index'])->name('root.about');
+Route::get('/contact', [ContactController::class, 'index'])->name('root.contact');
+Route::get('/', [HomeController::class, 'index'])->name('root.home');
+Route::get('/services', [ServicesController::class, 'index'])->name('root.services');
 
 Route::resource('menu', MenuController::class);
-
-
-Route::get('/store/{category?}/{item?}', function ($category = null, $item = null) {
-    if (isset($category)) {
-        if (isset($item)) {
-            return "you visiting the store for {$category} for {$item}";
-        }
-        
-        return "you visiting the store for {$category}";
-    } else {
-        return 'you are viewing all intruments';
-    }
-});
