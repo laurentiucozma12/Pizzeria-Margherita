@@ -39,22 +39,6 @@ class MenuController extends Controller
 
         return redirect()->route('menu.index');
     }
-    // Cleaner but does not work yet
-    // public function store(Request $request)
-    // {
-    //     $data = $request->validated();
-
-    //     // POST
-    //     $pizza = new Pizza();
-
-    //     $pizza->pizza_name = $data['pizza-name'];
-    //     $pizza->pizza_weight = $data['pizza_weight'];
-    //     $pizza->cook_name = $data['cook_name'];
-
-    //     $pizza->save();
-
-    //     return redirect()->route('menu.index');
-    // }
 
     public function show($pizza)
     {
@@ -63,14 +47,6 @@ class MenuController extends Controller
             'pizza' => Pizza::findOrFail($pizza)
         ]);
     }
-    // Cleaner but does not work yet
-    // public function show(Pizza $pizza)
-    // {
-    //     // GET
-    //     return view('menu.show', [
-    //         'pizza' => $pizza
-    //     ]);
-    // }
 
     public function edit($pizza)
     {
@@ -78,14 +54,6 @@ class MenuController extends Controller
             'pizza' => Pizza::findOrFail($pizza)
         ]);
     }
-    // Cleaner but does not work yet
-    // public function edit(Pizza $pizza)
-    // {
-    //     // GET
-    //     return view('menu.edit', [
-    //         'pizza' => $pizza
-    //     ]);
-    // }
 
     public function update(Request $request, string $pizza)
     {
@@ -106,21 +74,6 @@ class MenuController extends Controller
 
         return redirect()->route('menu.show', $pizza);
     }
-    // Cleaner but does not work yet
-    // public function update(MenuFormRequest $request, Pizza $pizza)
-    // {
-    //     // POST
-    //     $data = $request->validated();
-
-    //     // POST
-    //     $pizza->pizza_name = $data['pizza-name'];
-    //     $pizza->pizza_weight = $data['pizza_weight'];
-    //     $pizza->cook_name = $data['cook_name'];
-
-    //     $pizza->save();
-
-    //     return redirect()->route('menu.show', $pizza->id);
-    // }
 
     public function delete($pizza)
     {
@@ -128,11 +81,4 @@ class MenuController extends Controller
             'pizza' => Pizza::findOrFail($pizza)
         ]);
     }
-
-    // public function destroy(string $pizza)
-    // {
-    //     // return view('menu.delete', [
-    //     //     'pizza' => Pizza::findOrFail($pizza)
-    //     // ]);
-    // }
 }
