@@ -18,11 +18,6 @@ class MenuController extends Controller
     {
         return view('menu/create');
     }
-    
-    public function newPage()
-    {
-        return view('menu/newPage');
-    }
 
     public function store(Request $request)
     {
@@ -80,31 +75,12 @@ class MenuController extends Controller
         return redirect()->route('menu.show', $pizza);
     }
 
-    public function delete($pizza)
+    public function destroy(string $pizza)
     {
-        // GET
-        return view('menu.delete', [
-            'pizza' => Pizza::findOrFail($pizza)
-        ]);
-    }
-
-    public function destroy(Request $request, string $pizza)
-    {
-        $request->validate([
-            'pizza-name' => 'required',    
-            'pizza-weight' => ['required', 'integer'],    
-            'cook-name' => 'required'
-        ]);
-
-        // POST
-        $record = Pizza::FindOrFail($pizza);
-
-        $record->pizza_name = $request->input('pizza-name');
-        $record->pizza_weight = $request->input('pizza-weight');
-        $record->cook_name = $request->input('cook-name');
-
-        $record->save();
-
-        return redirect()->route('menu.show', $pizza);
+        $record = Pizza::find($pizza);
+ 
+        $record->delete();
+        
+        return redirect()->route('menu.index', $pizza);
     }
 }

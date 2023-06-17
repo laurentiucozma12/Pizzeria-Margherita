@@ -5,22 +5,25 @@
 @section('content')
 <div class="max-w-7xl mx-auto p-6 lg:p-8">
 
-    <div>
-        <h3>
-            {{ $pizza['pizza_name'] }}
-            <ul>
-                <li>
-                    Weight: {{ $pizza['pizza_weight'] }}
-                </li>
-                <li>
-                    Made by: {{ $pizza['cook_name'] }}
-                </li>
-            </ul>
-        </h3>
+    <form method="POST" action="{{ route('menu.destroy', ['menu' => $pizza->id]) }}">
+
+        @csrf
+        @method('DELETE')
+        <h3>{{ $pizza['pizza_name'] }}</h3>
+
+        <ul>
+            <li>
+                Weight: {{ $pizza['pizza_weight'] }}
+            </li>
+            <li>
+                Made by: {{ $pizza['cook_name'] }}
+            </li>
+        </ul>
 
         <button><a href="{{ route('menu.edit', ['menu' => $pizza->id]) }}">Edit</a></button>
-        {{-- <button><a href="{{ route('menu.delete', ['menu' => $pizza->id]) }}">Delete</a></button> --}}
-    </div>
+        <button type="submit">Delete</button>
+
+    </form>
 
 </div>
 @endsection
