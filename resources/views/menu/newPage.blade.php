@@ -1,17 +1,16 @@
 @extends('layout')
 
-@section('title', 'Menu - Delete | Pizzeria Margherita')
+@section('title', 'Menu - Create | Pizzeria Margherita')
 
 @section('content')
 <div class="max-w-7xl mx-auto p-6 lg:p-8">
 
-    <form method="POST" action="{{ route('menu.destroy', ['menu' => $pizza->id]) }}">
+    <form method="POST" action="{{ route('menu.store') }}">
         
         @csrf
-        @method('DELETE')
         <div class="input-container">
             <label class="text-sm" for="pizza-name">Pizza name</label>
-            <input class="text-lg border-1" type="text" id="pizza-name" value="{{ $pizza->pizza_name }}" name="pizza-name">
+            <input class="text-lg border-1" type="text" id="pizza-name" value="{{ old('pizza-name') }}" name="pizza-name">
             @error('pizza-name')
                 <div class="form-error">
                     {{ $message }}
@@ -20,7 +19,7 @@
         </div>
         <div class="input-container">
             <label class="text-sm" for="pizza-weight">Pizza weight</label>
-            <input class="text-lg border-1" type="text" id="pizza-weight" value="{{ $pizza->pizza_weight }}" name="pizza-weight">
+            <input class="text-lg border-1" type="text" id="pizza-weight" value="{{ old('pizza-weight') }}" name="pizza-weight">
             @error('pizza-weight')
                 <div class="form-error">
                     {{ $message }}
@@ -29,7 +28,7 @@
         </div>
         <div class="input-container">
             <label class="text-sm" for="cook-name">Cook name</label>
-            <input class="text-lg border-1" type="text" id="cook-name" value="{{ $pizza->cook_name }}" name="cook-name">
+            <input class="text-lg border-1" type="text" id="cook-name" value="{{ old('cook-name') }}" name="cook-name">
             @error('cook-name')
                 <div class="form-error">
                     {{ $message }}

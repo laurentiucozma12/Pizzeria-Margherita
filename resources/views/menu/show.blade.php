@@ -17,6 +17,9 @@
                 </li>
             </ul>
         </h3>
+
+        <button><a href="{{ route('menu.edit', ['menu' => $pizza->id]) }}">Edit</a></button>
+        {{-- <button><a href="{{ route('menu.delete', ['menu' => $pizza->id]) }}">Delete</a></button> --}}
     </div>
 
 </div>

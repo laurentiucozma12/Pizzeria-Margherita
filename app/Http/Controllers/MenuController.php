@@ -18,6 +18,11 @@ class MenuController extends Controller
     {
         return view('menu/create');
     }
+    
+    public function newPage()
+    {
+        return view('menu/newPage');
+    }
 
     public function store(Request $request)
     {
@@ -49,6 +54,7 @@ class MenuController extends Controller
 
     public function edit($pizza)
     {
+        // GET
         return view('menu.edit', [
             'pizza' => Pizza::findOrFail($pizza)
         ]);
