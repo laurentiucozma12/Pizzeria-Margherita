@@ -20,8 +20,10 @@
             </li>
         </ul>
 
-        <button><a href="{{ route('menu.edit', ['menu' => $pizza->id]) }}">Edit</a></button>
-        <button type="submit">Delete</button>
+        <div class="btn-container">
+            <button><a href="{{ route('menu.edit', ['menu' => $pizza->id]) }}">Edit</a></button>
+            <button class="delete-btn" type="submit">Delete</button>
+        </div>
 
     </form>
 

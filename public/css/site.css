@@ -14,9 +14,32 @@ nav a {
     border-width: .07rem;
 }
 
+.menu-container {
+    display: flex;
+    justify-content: center;
+    background-color: #41ae78;
+}
+
+.small-menu-container {
+
+}
+
 form {
-    padding: 2rem;
-    background-color: gray;
+    width:  250px;
+    height: 300px;
+    padding: 1.5rem;
+    background-color: rgb(88, 171, 69);
+    border: 5px solid black;
+}
+
+.pizza {
+    background-color: #cf8a00;
+    padding: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.pizza:hover {
+    background-color: #e9c914;
 }
 
 form .input-container {
@@ -32,17 +55,32 @@ form div>input {
     display: block;
 }
 
-form div>button {
+button {
+    width: 70px;
     padding: 5px;
-    background-color: #6f6f6f;
+    background-color: #558fed;
+    border: 3px solid black;
 }
 
-form div>button:hover {
-    background-color: #a9a9a9;
+button:hover {
+    background-color: #4fe7fe;
 }
 
 form .form-error {
     font-size: .75rem;
     color: red;
     font-weight: bold;
+}
+
+.delete-btn {
+    background-color: rgb(231, 34, 34);
+}
+
+.delete-btn:hover {
+    background-color: rgb(247, 77, 77);
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
 }
